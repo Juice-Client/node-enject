@@ -22,9 +22,6 @@ windows =  { version = "0.59.*", features = [
        "Win32_System_SystemServices",
        "Win32_UI_WindowsAndMessaging"
 ], default-features = false }
-log = "0.4.27"
-simplelog = "0.12.2"
 
 [build-dependencies]
-winres = "0.1.*"
 napi-build = "2.2.1"
