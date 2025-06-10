@@ -1,0 +1,30 @@
+[package]
+name = "enject"
+version = "0.0.1"
+description = "juice injector"
+edition = "2021"
+
+[lib]
+path = "src/dll.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+napi = { version = "2.16.17", features = ["tokio"] }
+napi-derive = "2.16.13"
+windows =  { version = "0.59.*", features = [
+       "Win32_System_LibraryLoader",
+       "Win32_System_Threading",
+       "Win32_Foundation",
+       "Win32_System_Diagnostics_ToolHelp",
+       "Win32_System_Memory",
+       "Win32_System_Diagnostics_Debug",
+       "Win32_Security",
+       "Win32_System_SystemServices",
+       "Win32_UI_WindowsAndMessaging"
+], default-features = false }
+log = "0.4.27"
+simplelog = "0.12.2"
+
+[build-dependencies]
+winres = "0.1.*"
+napi-build = "2.2.1"
