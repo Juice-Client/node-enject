@@ -34,13 +34,17 @@ jobs:
 
       - run: npx napi build --release
 
-      - run: copy .\node-enject.*.node artifacts\node-enject.node
+      - run: dir
+
+      - run: |
+          mkdir artifacts
+          copy ./*.node artifacts/node-enject.node
 
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.get_version.outputs.version }}
           name: Release ${{ steps.get_version.outputs.version }}
-          files: artifacts\*.node
+          files: artifacts/node-enject.node
           draft: true
           prerelease: false
         env:
