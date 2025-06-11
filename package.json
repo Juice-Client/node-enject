@@ -1,22 +1,39 @@
 {
     "name": "node-enject",
     "version": "1.0.2",
+    "description": "Electron injector that intercepts WNDPROC to fix a Chromium bug",
+    "keywords": [
+        "chromium",
+        "electron",
+        "napi",
+        "windows"
+    ],
+    "license": "GPL-3.0-or-later",
     "author": "robertpakalns",
-    "main": "index.js",
-    "napi": {
-        "name": "node-enject"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Juice-Client/node-enject"
     },
+    "main": "index.js",
+    "types": "./index.d.ts",
+    "files": [
+        "index.d.ts",
+        "index.js",
+        "node-enject.node"
+    ],
     "os": [
         "win32"
     ],
     "cpu": [
         "x64"
     ],
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "napi": {
+        "name": "node-enject"
+    },
     "devDependencies": {
         "@napi-rs/cli": "^2.18.4"
-    },
-    "files": [
-        "index.js",
-        "node-enject.node"
-    ]
+    }
 }
