@@ -40,11 +40,16 @@ jobs:
           mkdir artifacts
           copy ./*.node artifacts/node-enject.node
 
+      - run: npm pack
+        working-directory: ./artifacts
+
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.get_version.outputs.version }}
           name: Release ${{ steps.get_version.outputs.version }}
-          files: artifacts/node-enject.node
+          files: |
+            ./artifacts/node-enject.node
+            ./artifacts/*.tgz
           draft: true
           prerelease: false
         env:

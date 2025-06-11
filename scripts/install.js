@@ -5,7 +5,7 @@ const path = require("path")
 const version = require("../package.json").version
 
 const binaryName = "node-enject.node"
-const downloadUrl = `https://github.com/your-username/Juice-Client/node-enject/download/v${version}/${binaryName}`
+const downloadUrl = `https://github.com/Juice-Client/node-enject/download/v${version}/${binaryName}`
 const outPath = path.join(__dirname, "..", "bin", binaryName)
 
 fs.mkdirSync(path.dirname(outPath), { recursive: true })
