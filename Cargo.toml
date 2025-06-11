@@ -1,5 +1,5 @@
 [package]
-name = "enject"
+name = "node-enject"
 version = "0.0.1"
 description = "juice injector"
 edition = "2021"

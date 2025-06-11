@@ -1,5 +1,22 @@
 {
+    "name": "node-enject",
+    "version": "1.0.0",
+    "author": "robertpakalns",
+    "main": "index.js",
+    "scripts": {
+        "install": "node scripts/install.js"
+    },
     "napi": {
-        "name": "juice_injector"
-    }
+        "name": "node-enject"
+    },
+    "os": [
+        "win32"
+    ],
+    "cpu": [
+        "x64"
+    ],
+    "files": [
+        "index.js",
+        "scripts/install.js"
+    ]
 }
