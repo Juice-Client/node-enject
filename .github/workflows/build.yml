@@ -41,7 +41,7 @@ jobs:
           copy ./*.node artifacts/node-enject.node
 
       - run: npm pack
-        working-directory: ./artifacts
+        working-directory: .
 
       - uses: softprops/action-gh-release@v2
         with:

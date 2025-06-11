@@ -20,7 +20,6 @@
     },
     "files": [
         "index.js",
-        "scripts/install.js",
         "artifacts/node-enject.node"
     ]
 }
