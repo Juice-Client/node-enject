@@ -49,7 +49,7 @@ jobs:
           name: Release ${{ steps.get_version.outputs.version }}
           files: |
             ./artifacts/node-enject.node
-            ./artifacts/*.tgz
+            ./*.tgz
           draft: true
           prerelease: false
         env:
