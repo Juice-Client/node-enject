@@ -30,7 +30,7 @@ jobs:
           key: windows-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: windows-cargo-
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
 
       - run: npx napi build --release
 
