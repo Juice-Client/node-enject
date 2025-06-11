@@ -1,6 +1,6 @@
 {
     "name": "node-enject",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "robertpakalns",
     "main": "index.js",
     "napi": {
@@ -17,6 +17,6 @@
     },
     "files": [
         "index.js",
-        "artifacts/node-enject.node"
+        "node-enject.node"
     ]
 }
