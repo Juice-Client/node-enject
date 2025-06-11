@@ -5,20 +5,12 @@ description = "juice injector"
 edition = "2021"
 
 [lib]
-path = "src/dll.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = { version = "2.16.17", features = ["tokio"] }
+napi = { version = "2.16.17" }
 napi-derive = "2.16.13"
 windows =  { version = "0.59.*", features = [
-       "Win32_System_LibraryLoader",
-       "Win32_System_Threading",
-       "Win32_Foundation",
-       "Win32_System_Diagnostics_ToolHelp",
-       "Win32_System_Memory",
-       "Win32_System_Diagnostics_Debug",
-       "Win32_Security",
        "Win32_System_SystemServices",
        "Win32_UI_WindowsAndMessaging"
 ], default-features = false }
