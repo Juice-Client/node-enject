@@ -38,20 +38,10 @@ jobs:
           mkdir artifacts
           copy ./*.node artifacts/node-enject.node
 
-      - run: npm pack
-        working-directory: .
-
-      - uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.get_version.outputs.version }}
-          name: Release ${{ steps.get_version.outputs.version }}
-          files: |
-            ./artifacts/node-enject.node
-            ./*.tgz
-          draft: true
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: | 
+          dir
+          dir artifacts
+          dir artifacts/node-enject.node
 
   publish:
     needs: build
@@ -69,6 +59,11 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - run: npm ci
+
+      - run: | 
+          dir
+          dir artifacts
+          dir artifacts/node-enject.node
 
       - run: npm publish --access public
         env:
