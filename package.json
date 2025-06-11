@@ -1,5 +1,5 @@
 {
-    "name": "node-enject",
+    "name": "@juice-client/node-enject",
     "version": "1.0.2",
     "description": "Electron injector that intercepts WNDPROC to fix a Chromium bug",
     "keywords": [
