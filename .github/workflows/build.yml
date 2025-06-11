@@ -34,9 +34,7 @@ jobs:
 
       - run: npx napi build --release
 
-      - run: |
-          mkdir artifacts
-          copy .\npm\*.node artifacts\node-enject.node
+      - run: copy .\node-enject.*.node artifacts\node-enject.node
 
       - uses: softprops/action-gh-release@v2
         with:
