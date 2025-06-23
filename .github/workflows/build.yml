@@ -4,9 +4,6 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        platform: [x86_64-pc-windows-msvc, i686-pc-windows-msvc, aarch64-pc-windows-msvc]
 
     permissions:
       contents: write
@@ -42,7 +39,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: napi-windows-${{ matrix.platform }}
+          name: napi-windows
           path: |
             dist/*.node
 
@@ -52,18 +49,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: napi-windows-x86_64-pc-windows-msvc
-          path: dist/x64
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: napi-windows-i686-pc-windows-msvc
-          path: dist/x86
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: napi-windows-aarch64-pc-windows-msvc
-          path: dist/arm64
+          name: napi-windows
+          path: dist/
 
       - run: npm publish --access public
         env:
