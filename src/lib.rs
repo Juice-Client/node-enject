@@ -32,7 +32,19 @@ unsafe fn attach_hook(top_hwnd: HWND) {
 
     let orig = GetWindowLongPtrW(target, GWLP_WNDPROC);
     PREV_WNDPROC = std::mem::transmute(orig);
-    SetWindowLongPtrW(target, GWLP_WNDPROC, wnd_proc as isize);
+
+    #[cfg(target_pointer_width = "64")]
+    {
+        SetWindowLongPtrW(target, GWLP_WNDPROC, wnd_proc as isize);
+    }
+    #[cfg(target_pointer_width = "32")]
+    {
+        SetWindowLongPtrW(
+            target,
+            GWLP_WNDPROC,
+            (wnd_proc as isize).try_into().unwrap(),
+        );
+    }
 }
 
 unsafe extern "system" fn find_render_widget(hwnd: HWND, lparam: LPARAM) -> BOOL {

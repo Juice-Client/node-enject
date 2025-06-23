@@ -19,19 +19,18 @@
     "files": [
         "index.d.ts",
         "index.js",
-        "node-enject.node"
+        "dist"
     ],
     "os": [
         "win32"
     ],
     "cpu": [
-        "x64"
+        "x64",
+        "ia32",
+        "arm64"
     ],
     "engines": {
         "node": ">=16.0.0"
-    },
-    "napi": {
-        "name": "node-enject"
     },
     "devDependencies": {
         "@napi-rs/cli": "^2.18.4"
