@@ -38,9 +38,7 @@ jobs:
           rustup target add i686-pc-windows-msvc
           rustup target add aarch64-pc-windows-msvc
 
-      - run: npx napi build --release --target "${{ matrix.platform }}"
-
-      - run: mv dist/index.node dist/node-enject-${{ matrix.platform }}.node
+      - run: pwsh ./build.ps1
 
       - uses: actions/upload-artifact@v4
         with:
