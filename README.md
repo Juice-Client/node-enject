@@ -7,7 +7,7 @@ Supports `x64`, `ia32 (x86)`, and `arm64` architectures for Windows only.
 ## Build locally
 ```bash
 npm i -g @napi-rs/cli@latest # Install napi
-./local-test.ps1 # Build artifacts in /dist
+./build.ps1 # Build artifacts in /dist
 npm pack
 ```
 

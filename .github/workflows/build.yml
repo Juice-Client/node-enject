@@ -37,21 +37,6 @@ jobs:
 
       - run: pwsh ./build.ps1
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: napi-windows
-          path: |
-            dist/*.node
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: napi-windows
-          path: dist/
-
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
