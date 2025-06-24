@@ -37,3 +37,5 @@ win.once("ready-to-show", () => {
     win.show()
 })
 ```
+
+Built for [Juice Client](https://github.com/irrvlo/juice-client). [Community Server](https://discord.gg/FjzAAdSjng)
