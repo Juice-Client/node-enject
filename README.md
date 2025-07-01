@@ -1,3 +1,10 @@
+![Version](https://img.shields.io/npm/v/@juice-client/node-enject)
+![License](https://img.shields.io/github/license/Juice-Client/node-enject)
+![GitHub stars](https://img.shields.io/github/stars/Juice-Client/node-enject)
+![GitHub forks](https://img.shields.io/github/forks/Juice-Client/node-enject)
+![GitHub last commit](https://img.shields.io/github/last-commit/Juice-Client/node-enject)
+![Languages](https://img.shields.io/github/languages/top/Juice-Client/node-enject)
+
 # node-enject
 Electron injector that intercepts Chromium's render widget window to fix a Chromium bug.  
 In Chromium versions past ~97 holding and dragging the cursor freezes any current websocket connection if running with the flag `--disable-frame-rate-limit`.  
