@@ -1,11 +1,10 @@
 use napi_derive::napi;
 use windows::Win32::{
-    Foundation::{BOOL, HWND, LPARAM, LRESULT, WPARAM},
+    Foundation::{GetLastError, SetLastError, BOOL, HWND, LPARAM, LRESULT, WIN32_ERROR, WPARAM},
     System::SystemServices::MK_LBUTTON,
     UI::WindowsAndMessaging::{
-        CallWindowProcW, EnumChildWindows, GetClassNameW, GetWindowLongPtrW, SetWindowLongPtrW,
-        GWLP_WNDPROC, WM_LBUTTONDBLCLK, WM_LBUTTONDOWN, WM_MOUSEMOVE, WM_RBUTTONDBLCLK,
-        WM_RBUTTONDOWN, WNDPROC,
+        CallWindowProcW, EnumChildWindows, GetClassNameW, SetWindowLongPtrW, GWLP_WNDPROC,
+        WM_LBUTTONDBLCLK, WM_LBUTTONDOWN, WM_MOUSEMOVE, WM_RBUTTONDBLCLK, WM_RBUTTONDOWN, WNDPROC,
     },
 };
 
@@ -30,21 +29,16 @@ unsafe fn attach_hook(top_hwnd: HWND) {
         return;
     }
 
-    let orig = GetWindowLongPtrW(target, GWLP_WNDPROC);
-    PREV_WNDPROC = std::mem::transmute(orig);
+    SetLastError(WIN32_ERROR(0));
+    let new_proc = wnd_proc as usize as isize;
+    let prev = SetWindowLongPtrW(target, GWLP_WNDPROC, new_proc);
+    let err = GetLastError(); // <-- здесь объявляется `err`
 
-    #[cfg(target_pointer_width = "64")]
-    {
-        SetWindowLongPtrW(target, GWLP_WNDPROC, wnd_proc as isize);
+    if prev == 0 && err.0 != 0 {
+        return;
     }
-    #[cfg(target_pointer_width = "32")]
-    {
-        SetWindowLongPtrW(
-            target,
-            GWLP_WNDPROC,
-            (wnd_proc as isize).try_into().unwrap(),
-        );
-    }
+
+    PREV_WNDPROC = std::mem::transmute(prev);
 }
 
 unsafe extern "system" fn find_render_widget(hwnd: HWND, lparam: LPARAM) -> BOOL {
