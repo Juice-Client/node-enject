@@ -31,8 +31,8 @@ unsafe fn attach_hook(top_hwnd: HWND) {
 
     SetLastError(WIN32_ERROR(0));
     let new_proc = wnd_proc as usize as isize;
-    let prev = SetWindowLongPtrW(target, GWLP_WNDPROC, new_proc);
-    let err = GetLastError(); // <-- здесь объявляется `err`
+    let prev = SetWindowLongPtrW(target, GWLP_WNDPROC, new_proc as _);
+    let err = GetLastError();
 
     if prev == 0 && err.0 != 0 {
         return;
